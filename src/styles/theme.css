@@ -1,0 +1,37 @@
+/* Light mode defaults */
+:root {
+  --color-bg: #FCFBF9; /* Warm neutral cream */
+  --color-bg-subtle: #F2F0EB;
+  --color-bg-card: #FFFFFF;
+  --color-text: #1A1A1A;
+  --color-text-muted: #595959;
+  --color-border: #E5E5E5;
+  --color-shadow: rgba(0, 0, 0, 0.08);
+  --color-charm-string: #d0d0d0;
+}
+
+/* Dark mode explicit */
+[data-theme="dark"] {
+  --color-bg: #111111;
+  --color-bg-subtle: #1A1A1A;
+  --color-bg-card: #1E1E1E;
+  --color-text: #F2F2F2;
+  --color-text-muted: #A3A3A3;
+  --color-border: #333333;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-charm-string: #444;
+}
+
+/* Auto theme */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #111111;
+    --color-bg-subtle: #1A1A1A;
+    --color-bg-card: #1E1E1E;
+    --color-text: #F2F2F2;
+    --color-text-muted: #A3A3A3;
+    --color-border: #333333;
+    --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-charm-string: #444;
+  }
+}
