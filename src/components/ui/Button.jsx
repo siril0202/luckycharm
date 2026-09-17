@@ -6,7 +6,8 @@ export function Button({
   href, 
   onClick, 
   className = '', 
-  style = {} 
+  style = {},
+  ...props
 }) {
   const baseStyle = {
     display: 'inline-flex',
@@ -68,6 +69,7 @@ export function Button({
         className={className}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        {...props}
       >
         {children}
       </a>
@@ -81,6 +83,7 @@ export function Button({
       className={className}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      {...props}
     >
       {children}
     </button>

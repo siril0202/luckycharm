@@ -16,9 +16,9 @@ export function SuccessView({ orderId }) {
     <div style={containerStyle}>
       <Card style={{ textAlign: 'center', maxWidth: '550px', width: '100%' }}>
         <div style={{ fontSize: '4rem', marginBottom: 'var(--spacing-4)' }}>🎉</div>
-        <h2 style={{ fontSize: 'var(--font-size-2xl)', marginBottom: 'var(--spacing-2)' }}>Congratulations!</h2>
+        <h2 style={{ fontSize: 'var(--font-size-2xl)', marginBottom: 'var(--spacing-2)' }}>Payment Successful!</h2>
         <h3 style={{ fontSize: 'var(--font-size-lg)', marginBottom: 'var(--spacing-6)', fontWeight: 'normal' }}>
-          Your payment has been received.
+          Your payment has been received successfully.
         </h3>
         
         <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--spacing-4)', lineHeight: 1.6, fontSize: 'var(--font-size-lg)' }}>
@@ -30,11 +30,18 @@ export function SuccessView({ orderId }) {
           <span style={{ fontFamily: 'monospace', wordBreak: 'break-all', fontWeight: 'bold' }}>{orderId}</span>
         </div>
 
-        <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-accent)', marginBottom: 'var(--spacing-8)' }}>
+        <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-accent)', marginBottom: 'var(--spacing-6)' }}>
           ⚠️ Please keep your payment/transaction details until you receive your license.
         </p>
 
-        <Button href="/" style={{ width: '100%' }}>Return to Home</Button>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-3)' }}>
+          <Button href="/HanglyInstaller.msi" download="HanglyInstaller.msi" style={{ width: '100%' }}>
+            Download Hangly Installer
+          </Button>
+          <Button href="/" variant="secondary" style={{ width: '100%' }}>
+            Return to Home
+          </Button>
+        </div>
       </Card>
     </div>
   );

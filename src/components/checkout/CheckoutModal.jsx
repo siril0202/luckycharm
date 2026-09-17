@@ -49,6 +49,9 @@ export function CheckoutModal({ plan, onClose }) {
     marginTop: 'var(--spacing-4)',
   };
 
+  const numericPrice = parseFloat(plan.price.replace(/[^0-9.]/g, ''));
+  const upiLink = `upi://pay?pa=santhanasiril0202@okicici&pn=Hangly%20Charm&am=${numericPrice}&cu=INR`;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email) {
@@ -61,9 +64,6 @@ export function CheckoutModal({ plan, onClose }) {
 
     try {
       if (!supabase) throw new Error("Supabase is not configured");
-      
-      // Clean up the price string to get just the number (e.g. "₹99" -> 99)
-      const numericPrice = parseFloat(plan.price.replace(/[^0-9.]/g, ''));
 
       // Create a pending order directly in Supabase
       const { data, error: dbError } = await supabase
@@ -119,6 +119,16 @@ export function CheckoutModal({ plan, onClose }) {
           <p style={{ marginTop: 'var(--spacing-3)', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
             Or pay to UPI ID: <strong>santhanasiril0202@okicici</strong>
           </p>
+
+          <div style={{ marginTop: 'var(--spacing-4)' }}>
+            <Button href={upiLink} variant="secondary" style={{ width: '100%', display: 'flex', justifyContent: 'center', gap: '8px' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+              Pay via UPI App (Mobile)
+            </Button>
+          </div>
         </div>
 
         <form onSubmit={handleSubmit} style={formStyle}>
