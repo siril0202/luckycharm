@@ -48,10 +48,13 @@ export function SocialProofSection() {
     };
   };
 
-  const cardStyle = (bg) => ({
+  const cardStyle = (item) => ({
     width: '240px',
     height: '320px',
-    backgroundColor: bg,
+    backgroundColor: item.bg,
+    backgroundImage: item.image ? `url(${item.image})` : 'none',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
     borderRadius: 'var(--radius-lg)',
     flexShrink: 0,
     display: 'flex',
@@ -95,7 +98,7 @@ export function SocialProofSection() {
       <div className="marquee-wrapper" style={marqueeContainerStyle}>
         <div className="marquee-track" style={getMarqueeStyle(false)}>
           {socialProof.map((item) => (
-            <div key={item.id} style={cardStyle(item.bg)}>
+            <div key={item.id} style={cardStyle(item)}>
               <span style={handleStyle}>{item.handle}</span>
             </div>
           ))}
@@ -105,7 +108,7 @@ export function SocialProofSection() {
         {!prefersReducedMotion && (
           <div className="marquee-track" aria-hidden="true" style={getMarqueeStyle(true)}>
             {socialProof.map((item) => (
-              <div key={`${item.id}-dup`} style={cardStyle(item.bg)}>
+              <div key={`${item.id}-dup`} style={cardStyle(item)}>
                 <span style={handleStyle}>{item.handle}</span>
               </div>
             ))}
